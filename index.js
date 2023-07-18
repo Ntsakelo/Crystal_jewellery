@@ -12,7 +12,7 @@ import flash from "express-flash";
 
 const DATABASE_URL =
   process.env.DATABASE_URL ||
-  "postgresql://coder:pg123@localhost:5432/jewellery_catalogue";
+  "postgres://jewellery_store_user:i9UVQBYBpNVbakV8WkM3jzozPwBhG9HE@dpg-cir74odiuie930ks4b20-a/jewellery_store";
 
 const config = {
   connectionString: DATABASE_URL,
