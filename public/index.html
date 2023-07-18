@@ -3,6 +3,71 @@
 
 <head>
     <script type="text/javascript" src="//cdn.evgnet.com/beacon/partneracceleration/shoes2023/scripts/evergage.min.js"></script>
+    <!-- Data layer -->
+    <script>
+    var deviceCheck = /Mobile/i.test(navigator.userAgent) ? 'Mobile':'Desktop'
+    var dataLayer = {
+        "deviceType": deviceCheck,
+        "loginStatus": "guest",
+        "linkName": "",
+        "siteLanguage": "English",
+        "websiteName": "Crystal Jewellery",
+        "items":[],
+        "total":0,
+    }
+    var dataLayer2 = {
+        "event": "",
+        "deviceType": deviceCheck,
+        "siteSearch":{
+           "searchString":"",
+        },
+        "page" : {
+            "pageName" : "",
+        },
+        "customer" : {
+            "loginStatus": "",
+            "customerID":0,
+        },
+        "registration" : {
+            "registrationStatus":"",
+            
+        },
+        "product" : [{
+            "productEvent":"",
+            "quantity":0,
+            "productInfo":{
+                "productId":0,
+                "productName":""
+            }
+        }],
+        "cart":{
+            "item":[{
+                "quantity":0,
+                "productInfo":{
+                    "productID":0,
+                    "productName":"",
+                },
+                "price":{
+                    "sellingPrice":""
+                }
+            }]
+        },
+        "transaction":{
+            "transactionID":"",
+            "total":{
+                "currency": "ZAR",
+                "salesTax":"00.00"
+            }
+        },
+        "profile":{
+            "address":{
+                "stateProvince": "",
+                "postalCode": ""
+            }
+        }
+    }
+    </script>
+    <script src="https://assets.adobedtm.com/43e08a8c9425/5239cd2746ee/launch-6ec3742b2b95-development.min.js" async></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
