@@ -1,0 +1,676 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+html{
+    font-family: 'Roboto',sans-serif;
+}
+.logo{
+    height: 200px;
+    width: 200px;
+    display:block;
+    margin:auto;
+}
+.navigation{
+    text-align:center;
+    border-bottom: 1px solid rgb(235, 229, 229);
+}
+
+.navigation ul,.navigation-sm ul{
+    list-style-type: none;
+}
+.navigation a,.navigation-sm a{
+    text-decoration: none;
+}
+.navigation a:hover li,.navigation-sm a:hover li{
+    background-color: black;
+    color: white; 
+}
+.navigation li{
+    display:inline-block;
+    margin-right: 20px;
+    color: grey;
+    width: 100px;
+    height:30px;
+    padding-top:10px;    
+}
+.navigation-sm li{
+    margin: auto;
+    margin-top: 20px;
+    color: grey;
+    width: 100px;
+}
+.categoryLink:hover{
+    cursor:pointer;
+}
+.searchForm{
+    margin-top: 10px;
+    text-align: center;
+}
+.searchInput{
+    width:200px;
+    outline: none;
+    height: 25px;
+}
+.searchBtn{
+    background-color: black;
+    color:white;
+    border: 1px solid black;
+    height: 30px;
+}
+.searchBtn:hover{
+    cursor: pointer;
+}
+.filter{
+  width: 20%;
+  height: 500px;
+  /* border: 1px solid red; */
+  margin-top: 20px;
+  display:inline;
+  float: left;
+  box-sizing: border-box;
+}
+.content{
+    width: 100%;
+    height: 1000%;
+    /* border: 1px solid blue; */
+    overflow: hidden;
+}
+.filterBtn{
+    display:block;
+    margin:auto;
+    height: 30px;
+    background-color: black;
+    color:white;
+    border: none;
+}
+.filterBtn:hover{
+cursor:pointer;
+}
+.itemsDisplay{
+ width: 80%;
+ height: 100%;
+ /* border: 1px solid blue; */
+ margin-top:20px;
+ display:inline;
+ float:right;
+ box-sizing: border-box;
+ overflow: auto;
+ text-align: center;
+}
+.item{
+    width: 300px;
+    height: 400px;
+    display: inline-block;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+.item:hover{
+    cursor: pointer;
+}
+.itemImage{
+    width: 300px;
+    height: 200px;
+}
+.brand,.price,.color{
+    margin:5px;
+}
+.price{
+    color:grey;
+}
+.view{
+    opacity:0;
+    text-align: right;
+    margin-top: 30px;
+}
+.viewBtn,.viewTocartBtn{
+    color: grey;
+}
+.viewBtn:hover,.viewTocartBtn:hover{
+    color:black;
+}
+.item:hover .view{
+    transform: translateX(-20px);
+    opacity: 1;
+    transition: 0.3s linear all;
+}
+.productView{
+    width: 100%;
+    height: 100vh;
+    position:fixed;
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+    top: 0px;
+    z-index: 100;
+}
+.productDetails{
+    width: 85%;
+    height: 500px;
+    background-color: white;
+    margin:auto;
+    margin-top:50px;
+}
+.viewImage{
+    height: 400px;
+    width: 40%;
+    
+    display: inline;
+    float: left;
+    box-sizing: border-box;
+    margin-top: 40px;
+}
+.detailsImage{
+    width: 100%;
+    height: 100%;
+}
+.productInfo{
+    height: 400px;
+    width: 60%;
+
+    display: inline;
+    float: right;
+    box-sizing: border-box;
+}
+.brandInfo,.info,.infoPrice,.infoColor,.infoColorText,.infoQty,.infoQtyValue{
+    margin-left: 10px;
+}
+.infoColor{
+    margin-bottom:3px;
+}
+.infoColorText{
+    margin-top: 0px;
+    color: grey;
+}
+.infoQty{
+    margin-bottom: 3px;
+}
+.infoQtyValue{
+    margin-top: 0px;
+    height: 30px;
+    border: 1px solid grey;
+    outline: none;
+    /* text-align: center; */
+}
+.infoAddToCartBtn{
+    height: 33px;
+    border: none;
+    background-color: black;
+    color: white;
+}
+.infoAddToCartBtn:hover{
+    cursor: pointer;
+}
+.info{
+    font-size: 18px;
+    color: grey;
+    border-bottom: 1px solid grey;
+    padding-bottom:20px;
+}
+.moreDetails{
+    text-decoration: none;
+    color: green;
+    display:none;
+}
+.moreDetails:hover{
+    color:black;
+}
+.closeView,.closeCart,.closeShipping,.closeShippingDetails{
+    display:block;
+    float: right;
+    margin-top: 10px;
+    margin-right:10px;
+    font-size: 30px;
+    color: rgb(44, 43, 43);
+}
+.closeView:hover,.closeCart:hover,.closeShipping:hover,.closeShippingDetails:hover{
+    cursor: pointer;
+    color: grey;
+}
+.show{
+    display:block;
+}
+.hide{
+    display:none;
+}
+.cartPage{
+    width:100%;
+    height: 100vh;
+    /* display: block; */
+    position: fixed;
+    top:0px;
+    left:0px;
+    background-color: white;
+    overflow: auto;
+    z-index: 100;
+}
+.myProducts{
+    margin-top: 70px;
+
+}
+
+.productsTable{
+    width: 80%;
+    margin: auto;
+    border: 1px solid rgb(180, 180, 180);
+    border-collapse: collapse;
+}
+.productsTable .leftTh,td{
+    text-align: left;
+    border: 1px solid rgb(180, 180, 180);
+}
+.myCartTotHead{
+    text-align: left;
+    border: none;
+}
+.centerTh{
+    text-align: center;
+    border: 1px solid rgb(180, 180, 180);
+}
+.myItemImage{
+    width: 100px;
+    height: 100px;
+    border: 1px solid grey;
+    padding: 10px;
+}
+.remove{
+    background-color: black;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    margin: auto;
+}
+.remove:hover{
+    cursor: pointer;
+    background-color: white;
+    color:black;
+    border: 1px solid black;
+    transition: 0.3s linear all;
+}
+.remove:hover .removeBtn{
+    color: black;
+}
+.removeBtn{
+    margin-top: 5px;
+    color: white;
+}
+.myQty,.myItemPrice,.myItemSubTot{
+    text-align: center;
+}
+.myQtyValue{
+    width: 50px;
+    text-align: center;
+    height: 30px;
+    border: 1px solid grey;
+    outline: none;
+}
+.updateQtyBtn{
+    height: 33px;
+    background-color: black;
+    color:white;
+    border: none;
+
+}
+.updateQtyBtn:hover{
+    cursor: pointer;
+}
+.myItemPrice,.myItemSubTot{
+    color: grey;
+}
+.returnShoppingBtn,
+.goToCheckOutBtn,
+.proceedToPaymentBtn,
+.useAddressBtn{
+    display: block;
+    margin:auto;
+    margin-top: 20px;
+    height: 30px;
+    border: none;
+    background-color: black;
+    color: white;
+}
+.loginBtn{
+    height: 40px;
+    border: none;
+    background-color: black;
+    color: white;
+    float: right;
+    margin-right: 35px;
+    position: relative;
+}
+.returnShoppingBtn:hover,
+.goToCheckOutBtn:hover,
+.proceedToPaymentBtn:hover,
+.useAddressBtn:hover,
+.loginBtn:hover{
+    cursor: pointer;
+}
+.goToCheckOutBtn{
+    margin-bottom:20px;
+}
+.myCartTotals{
+    width:50%;
+    margin:auto;
+    border-collapse: collapse;
+}
+.myCartTotals td{
+    border: none;
+}
+.myCartTotals tr{
+    border: 1px solid rgb(180, 180, 180);
+}
+.myCartSubTotalValue,
+.myCartTotalValue,
+.vatValue{
+    color: grey;
+}
+/* shipping */
+.shippingPage{
+    width: 100%;
+    height: 100vh;
+    position:fixed;
+    top: 0px;
+    left:0px;
+    background-color: white;
+    overflow: auto;
+}
+.controls{
+    height: 30px;
+    width: 50%;
+    outline: none;
+    font-size: 20px;
+    border: 1px solid grey;
+    
+}
+#map {
+    height: 500px;
+    margin-top: 50px;
+  }
+.shippingDetails{
+    width: 100%;
+    height: 100vh;
+    position:fixed;
+    background-color: white;
+    top:0px;
+    left:0px;
+ }
+ .shippingForm{
+    margin-top:100px;
+ }
+ .shippingInput{
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    height: 30px;
+    width: 300px;
+    outline: none;
+
+ }
+ .shippingHead{
+    margin-left: 10px;
+ }
+ .destination{
+    width: 300px;
+    height: 50px;
+    border: 1px solid grey;
+    margin:auto;
+ }
+ .destination:hover{
+    cursor: pointer;
+ }
+ .locationIcon{
+    margin:15px;
+    color: rgb(35, 205, 35)
+ }
+ .fa-angle-right{
+    float: right;
+    margin:15px;
+    color: rgb(35, 205, 35)
+ }
+ .address{
+    display:inline;
+    color: rgb(35, 205, 35);
+    font-size: 12px;
+ }
+ .userInfo{
+    width: 300px;
+    height: 200px;
+    border: 1px solid  grey;
+    margin:auto;
+    margin-bottom: 10px;
+ }
+ .userName i, 
+ .userName p,
+ .userEmail i,
+ .userEmail p,
+ .userContact i,
+ .userContact p{
+    display:inline-block;
+    margin-top: 10px;
+    font-size: 20px;
+    color: grey;
+ }
+ .userName i,
+ .userEmail i,
+ .userContact i{
+    margin-left: 10px;
+    margin-right: 5px;
+ }
+ .infoUpdtBtn{
+    position:relative;
+    height: 30px;
+    bottom:-6px;
+    float: right;
+    background-color: black;
+    color: white;
+    border: none;
+ }
+ .infoUpdtBtn:hover{
+    cursor: pointer;
+ }
+ .cartBtn{
+    display:block;
+    position:fixed;
+    bottom:5px;
+    right: 10px;
+    font-size: 40px;
+    /* margin-right: 10px; */
+        
+ }
+ .cartBtn:hover{
+    cursor: pointer;
+ }
+ #count{
+    position:relative;
+    font-size: 16px;
+    /* width: 20px;
+    height: 20px; */
+    border-radius: 50%;
+    
+    color: white;
+    top: -30px;
+    margin: auto;
+    text-align: center;
+    padding-top: 10px;
+ }
+ .target{
+    background-color:black;
+    color:white;
+ }
+ .qtyError{
+    color: red;
+    margin-left:10px;
+    margin-top:0px;
+    font-size: 14px;
+    display: none;
+ }
+ .shoppingBag{
+    margin-right: 3px;
+ }
+ .emptyCartMessage{
+    text-align: center;
+    color:grey;
+ }
+ .refineByText{
+    color:grey;
+ }
+ .genderFilter{
+    border-bottom:1px solid grey;
+    height: 90px;
+ }
+.genderBtn{
+    width: 70px;
+    height: 30px;
+    background-color: black;
+    color:white;
+    border:none;
+}
+.genderBtn:hover{
+    cursor: pointer;
+}
+.colorFilter{
+    height:140px;
+    border-bottom: 1px solid grey;
+}
+.filterColor{
+    width: 40px;
+    height:40px;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom:10px;
+}
+.filterColor:hover{
+    cursor: pointer;
+}
+.gold{
+    background-color: rgb(187,155,73);
+}
+.goldSilver{
+    background:linear-gradient(to right,rgb(187,155,73) 50%,rgb(219, 219, 219) 50%);
+}
+.silverBlack{
+    background:linear-gradient(to right,black 50%,rgb(219, 219, 219) 50%);
+}
+.black{
+    background-color:black;
+}
+.mixed{
+    background:linear-gradient(to right,rgb(187,155,73),rgb(219,219,219),rgb(205, 127, 50))
+}
+.silver{
+    background-color: rgb(219,219,219);
+}
+.priceFilter{
+    border-bottom: 1px solid grey;
+    height: 90px
+
+}
+.minimumPrice,.maximumPrice{
+    height:30px;
+    width: 80px;
+    outline:none;
+    display: inline;
+    margin-right: 10px;
+}
+.rangeText{
+    display: inline;
+    margin-right: 10px;
+}
+@media screen and (width:280px){
+    .item{
+        width: 200px;
+    }
+    .itemImage{
+        width:200px;
+    }
+    .infoQtyValue{
+        width: 50px;
+        
+    }
+}
+@media screen and (max-width:560px){
+    .productView{
+        overflow: scroll;
+    }
+    .productDetails{
+        height:700px;
+        margin-top: 20px;
+    }
+    .viewImage{
+        float: none;
+        height: 200px;
+        width: 100%;
+        display:block;
+    }
+    .productInfo{
+        float: none;
+        width: 100%;
+       display:block;
+    }
+    .myProducts{
+        width: 100%;
+        overflow-y: auto;
+    }
+    .myCartTotals{
+        width: 100%;
+    }
+
+}
+@media screen and (max-width:889px){
+    .navigation{
+        display: none;
+    }
+    .navigation-sm ul{
+        border-top:1px solid rgb(235, 229, 229);
+    }
+    .navBtn{
+        margin-left: 10px;
+        font-size: 30px;
+        color: grey;
+    }
+     .navBtn:hover{
+        cursor: pointer;
+     }   
+}
+@media screen and (min-width: 889px){
+    .navigation{
+        display:block;
+    }
+    .navigation-sm{
+        display:none;
+    }
+}
+
+@media screen and (max-width:767px){
+    .itemsDisplay,.filter{
+        float:none;
+        display:block;
+        border: 1px solid transparent;
+        width:100%;
+        text-align: center;
+    }
+    .item{
+        margin:auto;
+    }
+    .brand,.price,.color{
+        margin-top:5px;
+    }
+    .filter{
+        height: 500px;
+
+    }
+}
+@media screen and (min-width:767px) and (max-width:1157px){
+    .minimumPrice,
+    .maximumPrice,
+    .rangeText{
+        display:block
+    }
+    .priceFilter{
+        height: 200px;
+    }
+}
+@media screen and (min-width:768px){
+    .filterBtn{
+        display:none;
+    }
+}

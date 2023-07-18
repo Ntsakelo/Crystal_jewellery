@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script type="text/javascript" src="//cdn.evgnet.com/beacon/partneracceleration/shoes2023/scripts/evergage.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://kit.fontawesome.com/4f065757a2.js" crossorigin="anonymous"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script type="module" src="./client.js"></script>
+    <title>Crystal</title>
+</head>
+
+<body>
+    <!-- <div class="productView">
+    <div class="productDetails">
+    <i class="fa-solid fa-xmark closeView"></i>
+    </div>
+    </div> -->
+    <div class="container">
+        <div class="companyName">
+            <img src="./crystal-jewellery-logo-zip-file/png/logo-black.png" alt="" class="logo">
+        </div>
+        <nav class="navigation">
+            <ul class="bigList list">
+                <a class="categoryLink" id="All" >
+                    <li>ALL</li>
+                </a>
+                <a class="categoryLink" id="Bracelets">
+                    <li>BRACELETS</li>
+                </a>
+                <a class="categoryLink" id="Necklaces">
+                    <li>NECKLACES</li>
+                </a>
+                <a class="categoryLink" id="Earrings">
+                    <li>EARRINGS</li>
+                </a>
+                <a class="categoryLink" id="Rings">
+                    <li>RINGS</li>
+                </a>
+                <a class="categoryLink" id="Watches">
+                    <li>WATCHES</li>
+                </a>
+                <button class="loginBtn">LOG IN</button>
+            </ul>
+        </nav>
+        <nav class="navigation-sm">
+            <i class="fa-solid fa-bars navBtn"></i>
+            <ul class="smallList list">
+                <a href="" class="link bracelets">
+                    <li>BRACELETS</li>
+                </a>
+                <a href="" class="link necklaces">
+                    <li>NECKLACES</li>
+                </a>
+                <a href="" class="link earrings">
+                    <li>EARRINGS</li>
+                </a>
+                <a href="" class="link rings">
+                    <li>RINGS</li>
+                </a>
+                <a href="" class="link watches">
+                    <li>WATCHES</li>
+                </a>
+            </ul>
+        </nav>
+        <script type="text/x-template" class="productViewTemplate">
+            {{#each item}}
+            <div class="productDetails">
+                <div>
+                    <i class="fa-solid fa-xmark closeView"></i>
+                </div>
+                <div class="viewImage">
+                    <img src={{this.item_url}} alt="" class="detailsImage">
+                </div>
+                <div class="productInfo">
+                    <h1 class="brandInfo">{{this.item}}</h1>
+                    <p class="info">
+                        Crystal
+                        <br>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, deleniti?
+                        <br><br>
+                        <a href="" class="moreDetails">
+                        <i class="fa-sharp fa-solid fa-bag-shopping shoppingBag"></i>view item in cart</a>
+                    </p>
+                    <h3 class="infoPrice">R{{this.item_price}}</h3>
+                    <h3 class="infoColor">Color :</h3>
+                    <p class="infoColorText">{{this.color}}</p>
+                    <h3 class="infoQty">Quantity</h3>
+                    <form action="" class="submitAddToCart">
+                        <input type="number" value="1" class="infoQtyValue">
+                        <button type="button" class="infoAddToCartBtn" id={{this.id}}>ADD TO CART</button>
+                        <p class="qtyError">Qty should be greater than 0</p>
+                    </form>
+                </div>
+            </div>
+            {{/each}}
+        </script>
+        <div class="productView hide">
+        </div>
+        <div class="content show">
+            <div class="search">
+                <form action="" class="searchForm">
+                    <input type="text" class="searchInput" placeholder="Search">
+                    <button type="submit" class="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+            </div>
+            <div class="filter">
+                <button class="filterBtn">REFINE BY</button>
+                <p class="refineByText">REFINE BY:</p>
+                <div class="filters show">
+                    <div class="genderFilter">
+                        <p>GENDER</p>
+                        <button type="button" class="genderBtn maleBtn" id="Male">MALE</button>
+                        <button type="button" class="genderBtn femaleBtn" id="Female">FEMALE</button>
+    
+                    </div>
+                    <div class="colorFilter">
+                      <p>COLOR</p>
+                      <div class="filterColor gold"></div>
+                      <div class="filterColor goldSilver"></div>
+                      <div class="filterColor silverBlack"></div>
+                      <div class="filterColor black"></div>
+                      <div class="filterColor mixed"></div>
+                      <div class="filterColor silver"></div>
+                    </div>
+                    <div class="priceFilter">
+                      <p>PRICE</p>
+                      <input type="number" class="minimumPrice" placeholder="Min price">
+                      <p class="rangeText">to</p>
+                      <input type="number" class="maximumPrice" placeholder="Max price">
+                    </div>
+                </div>
+            </div>
+            <script type="text/x-template" class="itemsTemplate">
+                {{#each item}}
+                <div class="item">
+                    <img src={{this.item_url}} alt="" class="itemImage">
+                    <h4 class="brand">{{this.item}}</h4>
+                    <h4 class="color">{{this.color}}</h4>
+                    <h4 class="price">R{{this.item_price}}</h4>
+                    <div class="view">
+                        <i class="fa-solid fa-eye viewBtn" id={{this.id}}></i>
+                    </div>
+                    <div class="view">
+                        <i class="fa-solid fa-cart-shopping viewTocartBtn" id={{this.item}}></i>
+                    </div>
+                </div> 
+                {{/each}}
+            </script>
+            <div class="itemsDisplay">
+            </div>
+            <i class="fa-sharp fa-solid fa-bag-shopping cartBtn"><div id="count">10</div></i>
+            
+        
+        </div>
+        <script type="text/x-template" class="cartTemplate">
+        {{#if cartItems}}
+        <table class="productsTable">
+            <thead>
+                <th class="leftTh">Product</th>
+                <th class="leftTh">Product Name</th>
+                <th class="centerTh">Price</th>
+                <th class="centerTh">Qty</th>
+                <th class="centerTh">Sub Total</th>
+                <th class="centerTh">Action</th>
+            </thead>
+         {{#each cartItems}}
+            <tbody>
+                <tr>
+                    <td class="myProductImage">
+                        <img src={{this.item_url}} alt="" class="myItemImage"> 
+                    </td>
+                    <td class="myItemName">{{this.item}}</td>
+                    <td class="myItemPrice">{{this.item_price}}</td>
+                    <td class="myQty">
+                        <input type="number" value={{this.qty}} class="myQtyValue" id={{this.id}}>
+                        <input type="button" id={{this.id}} class="updateQtyBtn" value="Update">
+                    </td>
+                    <td class="myItemSubTot">{{this.item_subtotal}}</td>
+                    <td class="myItemAction">
+                        <div class="remove" id={{this.id}}>
+                            <i class="fa-solid fa-trash removeBtn"></i>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+            {{/each}}
+        </table>
+         {{else}}
+         <p class="emptyCartMessage">No items in the cart</p>
+         {{/if}}
+        </script>
+        <div class="cartPage hide">
+            <div>
+               <i class="fa-solid fa-xmark closeCart"></i>
+            </div>
+            <div class="myProducts">
+            </div>  
+            <button class="returnShoppingBtn">CONTINUE SHOPPING</button>  
+            <hr>
+            <div class="totals">
+             <table class="myCartTotals">
+                <thead>
+                    <th class="myCartTotHead">Cart Total</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="myCartSubTotal">Item(s) Subtotal</td>
+                        <td class="myCartSubTotalValue">R1499.99</td>
+                    </tr>
+                    <tr>
+                        <td class="vat">VAT</td>
+                        <td class="vatValue">R0.00</td>
+                    </tr>
+                    <tr>
+                        <td class="myCartTotal">Total Amount</td>
+                        <td class="myCartTotalValue">R1499.99</td>
+                    </tr>
+                </tbody>
+             </table>
+            </div>   
+            <button class="goToCheckOutBtn">PROCEED TO CHECKOUT</button>   
+        </div>
+        <div class="shippingDetails hide">
+            <div>
+                <i class="fa-solid fa-xmark closeShippingDetails"></i>
+            </div>
+            <h3 class="shippingHead">Shipping Details</h3>
+            <form action="" class="shippingForm">
+                <div class="userInfo">
+                <div class="userName">
+                    <i class="fa-solid fa-user"></i>
+                    <p class="name">John Doe</p>
+                </div>
+                <div class="userEmail">
+                    <i class="fa-solid fa-envelope"></i>
+                    <p class="email">John.Doe@mail.com</p>
+                </div>
+                <div class="userContact">
+                    <i class="fa-solid fa-phone"></i>
+                    <p class="contact">012 345 6789</p>
+                </div>
+                <button class="infoUpdtBtn">UPDATE</button>
+                </div>
+                <div class="destination">
+                    <i class="fa-solid fa-location-dot locationIcon"></i>
+                    <p class="address">64 Tarentaal street</p>
+                    <i class="fa-solid fa-angle-right"></i>
+                </div>
+                <button class="proceedToPaymentBtn">PROCEED TO PAYMENT</button>
+            </form>
+        </div>
+        <div class="shippingPage hide">
+            <div>
+                <i class="fa-solid fa-xmark closeShipping"></i>
+             </div>
+             <input
+             id="pac-input"
+             class="controls"
+             type="text"
+             placeholder="Search Box"
+           />
+             <div id="map"></div>
+             <button class="useAddressBtn">USE ADDRESS</button>
+        </div>
+    </div>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCzIRAf87UF5DvT7v6n5j8-W0eqPTIe1s&libraries=places&callback=initMap">
+</script>
+<script>
+    function initMap() {
+      const map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: -33.8688, lng: 151.2195 },
+        zoom: 13,
+        mapTypeId: "roadmap",
+      });
+      // Create the search box and link it to the UI element.
+      const input = document.getElementById("pac-input");
+      const searchBox = new google.maps.places.SearchBox(input);
+    
+      map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+      // Bias the SearchBox results towards current map's viewport.
+      map.addListener("bounds_changed", () => {
+        searchBox.setBounds(map.getBounds());
+      });
+    
+      let markers = [];
+    
+      // Listen for the event fired when the user selects a prediction and retrieve
+      // more details for that place.
+      searchBox.addListener("places_changed", () => {
+        const places = searchBox.getPlaces();
+    
+        if (places.length == 0) {
+          return;
+        }
+    
+        // Clear out the old markers.
+        markers.forEach((marker) => {
+          marker.setMap(null);
+        });
+        markers = [];
+    
+        // For each place, get the icon, name and location.
+        const bounds = new google.maps.LatLngBounds();
+    
+        places.forEach((place) => {
+          if (!place.geometry || !place.geometry.location) {
+            console.log("Returned place contains no geometry");
+            return;
+          }
+    
+          const icon = {
+            url: place.icon,
+            size: new google.maps.Size(71, 71),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(17, 34),
+            scaledSize: new google.maps.Size(25, 25),
+          };
+    
+          // Create a marker for each place.
+          markers.push(
+            new google.maps.Marker({
+              map,
+              icon,
+              title: place.name,
+              position: place.geometry.location,
+            })
+          );
+          if (place.geometry.viewport) {
+            // Only geocodes have viewport.
+            bounds.union(place.geometry.viewport);
+          } else {
+            bounds.extend(place.geometry.location);
+          }
+        });
+        map.fitBounds(bounds);
+      });
+    }
+    window.initMap = initMap;
+
+</script>
+    <script src="./client.js"></script>
+</body>
+
+</html>
