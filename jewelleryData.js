@@ -28,6 +28,7 @@ export default function jewelleryData(db){
         }
        let results = await db.oneOrNone('select * from products where id=$1',[id]);
        await db.none('insert into catalogue(item_id,qty,item_subTotal,customer_ref,customer_id) values($1,$2,$3,$4,$5)',[results.id,qty,(results.item_price*qty).toFixed(2),cust_ref,cust_id]);
+       return await db.oneOrNone('select * from catalogue join products on catalogue.item_id = products.id where item_id = $1 and customer_ref = $2',[id,cust_ref]);
     }catch(err){
         console.log(err)
     }

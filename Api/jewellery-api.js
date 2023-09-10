@@ -46,7 +46,12 @@ export default function (jewelleryData){
           let qty = Number(req.params.qty);
           let customerId = null;
           let customerRef = req.session.user;
-          await jewelleryData.addToCat(itemId,qty,customerRef,customerId);
+          let results = await jewelleryData.addToCat(itemId,qty,customerRef,customerId); 
+          res.json({
+            data:results,
+            status:'success'
+          })
+
     }catch(err){
       next(err)
     }

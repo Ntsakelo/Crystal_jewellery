@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         dataLayer.push({ecommerce:null});
         dataLayer.push({
           event: 'view_item_list',
+          page: 'home',
           ecommerce:{
             items:itemList
           }
@@ -86,9 +87,10 @@ document.addEventListener('DOMContentLoaded',()=>{
               dataLayer.push({ecommerce:null});
               dataLayer.push({
                 event: 'view_item',
+                page:'product_view',
                 ecommerce:{
                   currency: "ZAR",
-                  items: {item_id:data.id,item_name:data.item,item_brand:data.brand,item_variant:data.color,price:Number(data.item_price)},
+                  items: [{item_id:data.id,item_name:data.item,item_brand:data.brand,item_variant:data.color,price:Number(data.item_price)}],
                 }
               })
               let template = Handlebars.compile(productViewTemplate.innerHTML);
@@ -195,7 +197,19 @@ document.addEventListener('DOMContentLoaded',()=>{
             return;
           }
           axios.get(`/api/products/addToCart/${infoAddToCartBtn.id}/${infoQtyValue.value}`).then(results=>{
-             results;
+            let response = results.data;
+            let data = response.data;
+            dataLayer.push({ecommerce:null});
+             dataLayer.push({ecommerce:null});
+             dataLayer.push({
+               event: 'add_to_cart',
+               page:'product_view',
+               ecommerce:{
+                 currency: "ZAR",
+                 value: Number(data.item_price),
+                 items: [{item_id:data.id,item_name:data.item,item_brand:data.brand,item_variant:data.color,price:Number(data.item_price)}],
+               }
+             })
              const moreDetails = document.querySelector('.moreDetails');
              moreDetails.setAttribute('style','display:block');
            // let result = viewCart();
@@ -221,6 +235,24 @@ document.addEventListener('DOMContentLoaded',()=>{
       axios.get('/api/cart').then(results=>{
         let response = results.data;
         let data = response.data;
+        let itemList = [];
+        let totalVal = 0;
+        data.forEach(item =>{
+          let itemDetails ={};
+          totalVal += Number(item.item_price);
+          itemDetails = {item_id:item.id,item_name:item.item,item_brand:item.brand,item_variant:item.color,price:Number(item.item_price)};
+          itemList.push(itemDetails);
+        })
+        dataLayer.push({ecommerce:null});
+        dataLayer.push({
+          event: 'view_cart',
+          page: 'cart',
+          ecommerce:{
+            currency: "ZAR",
+            value: totalVal,
+            items:itemList
+          }
+        })
         const template = Handlebars.compile(cartTemplate.innerHTML);
         myProducts.innerHTML = template({
           cartItems:data

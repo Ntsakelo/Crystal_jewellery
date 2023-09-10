@@ -14,6 +14,10 @@ const DATABASE_URL =
   process.env.DATABASE_URL ||
   "postgres://jewellery_store_user:i9UVQBYBpNVbakV8WkM3jzozPwBhG9HE@dpg-cir74odiuie930ks4b20-a.oregon-postgres.render.com/jewellery_store";
 
+  // const DATABASE_URL =
+  // process.env.DATABASE_URL ||
+  // "postgresql://coder:pg123@localhost:5432/jewellery_catalogue";
+
 const config = {
   connectionString: DATABASE_URL,
 };
