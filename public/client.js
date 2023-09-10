@@ -48,29 +48,26 @@ document.addEventListener('DOMContentLoaded',()=>{
       shippingDetails.classList.remove('hide');
       shippingDetails.classList.add('show');
     })
-
-    /* DataLayer
-    var dataLayer = {
-      "deviceType": deviceCheck,
-      "loginStatus": "guest",
-      "linkName": "",
-      "siteLanguage": "English",
-      "websiteName": "Crystal Jewellery",
-      "products":[],
-      "productName":"",
-      "productId":"",
-      "productCategory":"",
-      "Price":0,
-      "qty":0,
-      "subTotal":0,
-      "total":0,
-  }
-  */
+  
     ///API CALLS
     function displayProducts(){
       axios.get('/api/products').then((results)=>{
         let response = results.data;
         let data = response.data;
+        //console.log(data);
+        let itemList = [];
+        data.forEach(item =>{
+          let itemDetails ={};
+          itemDetails = {item_id:item.id,item_name:item.item,item_brand:item.brand,item_variant:item.color,price:Number(item.item_price)};
+          itemList.push(itemDetails);
+        })
+        dataLayer.push({ecommerce:null});
+        dataLayer.push({
+          event: 'view_item_list',
+          ecommerce:{
+            items:itemList
+          }
+        })
         const template = Handlebars.compile(itemsTemplate.innerHTML);
         itemsDisplay.innerHTML = template({
           item: data
@@ -78,7 +75,6 @@ document.addEventListener('DOMContentLoaded',()=>{
         const viewItemBtns = document.querySelectorAll('.viewBtn');
         const viewToCartBtns = document.querySelectorAll('.viewTocartBtn');
         const productView = document.querySelector('.productView');
-        
         //API Call to display a selected item
         viewItemBtns.forEach(btn=>{
           btn.addEventListener('click',()=>{
@@ -87,6 +83,14 @@ document.addEventListener('DOMContentLoaded',()=>{
               let data = response.data;
               let itemList = [];
               itemList.push(data);
+              dataLayer.push({ecommerce:null});
+              dataLayer.push({
+                event: 'view_item',
+                ecommerce:{
+                  currency: "ZAR",
+                  items: {item_id:data.id,item_name:data.item,item_brand:data.brand,item_variant:data.color,price:Number(data.item_price)},
+                }
+              })
               let template = Handlebars.compile(productViewTemplate.innerHTML);
               productView.innerHTML = template({
                 item:itemList
@@ -97,8 +101,8 @@ document.addEventListener('DOMContentLoaded',()=>{
                 productView.classList.add('hide');
               })
               //Data Layer
-              dataLayer.items = itemList;
-              _satellite.track("viewTrack");
+              // dataLayer.items = itemList;
+              // _satellite.track("viewTrack");
               addToCart();
             })
             productView.classList.remove('hide');
@@ -200,7 +204,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             let response = results.data;
             let data = response.data;
             dataLayer.items = data;
-            _satellite.track("addToCartTrack");
+           // _satellite.track("addToCartTrack");
            })
         })
       }
